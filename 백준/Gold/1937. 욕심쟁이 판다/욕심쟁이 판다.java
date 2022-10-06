@@ -57,14 +57,16 @@ class Main{
 		for( int k=0;k<4;k++ ){
 			int nX = i + dx[k],
 				nY = j + dy[k];
+            
+            if( nX < 0 || nY < 0 || nX >= N || nY >= N ){
+                continue;
+            }
 
-			if( nX>-1&&nX<N&&nY>-1&&nY<N ){
-				if( FOREST[i][j]<FOREST[nX][nY] ){ // 방문하지 않았고 현재 값보다 크면
-					int nCount = DFS( N, FOREST, D, nX, nY) + 1; // 다음 칸으로 움직일 수 있음을 의미하므로 nX,nY의 다음 인덱스로서 +1을 해줌.
-					D[i][j] = Math.max(D[i][j], nCount); // 현재까지 온 칸의 수에다가 현재까지 온 칸의 수 VS 다음 칸으로 움직일 수 있는 칸의 수 중에 더 큰 수가 들어가게 된다.
-					DFS( N, FOREST, D, nX, nY );
-				}
-			}
+            if( FOREST[i][j]<FOREST[nX][nY] ){ // 방문하지 않았고 현재 값보다 크면
+                int nCount = DFS( N, FOREST, D, nX, nY) + 1; // 다음 칸으로 움직일 수 있음을 의미하므로 nX,nY의 다음 인덱스로서 +1을 해줌.
+                D[i][j] = Math.max(D[i][j], nCount); // 현재까지 온 칸의 수에다가 현재까지 온 칸의 수 VS 다음 칸으로 움직일 수 있는 칸의 수 중에 더 큰 수가 들어가게 된다.
+                DFS( N, FOREST, D, nX, nY );
+            }
 		}
 		
 		return D[i][j];
