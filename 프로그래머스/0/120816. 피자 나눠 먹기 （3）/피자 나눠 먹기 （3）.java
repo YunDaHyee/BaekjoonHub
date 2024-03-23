@@ -1,9 +1,14 @@
 class Solution {
     public int solution(int slice, int n) {
-        double answer = 0.0;
-        while ((slice * answer) / n < 1.0) {
-            answer +=1;
+        int answer = n/slice;
+        int nmg = n%slice;
+        while( nmg!=0 ){
+            answer++;
+            if( nmg<slice ){
+                break;
+            }
+            nmg%=slice;
         }
-        return (int)answer;
+        return answer;
     }
 }
