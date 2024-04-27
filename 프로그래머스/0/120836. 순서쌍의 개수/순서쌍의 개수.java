@@ -40,6 +40,5 @@ class Solution {
 
         // 3. O(n)이지만 스트림 이용
         // return (int) IntStream.rangeClosed(1, n).filter(i -> n % i == 0).count();
-        
     }
 }
