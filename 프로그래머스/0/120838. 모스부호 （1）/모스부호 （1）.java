@@ -3,6 +3,8 @@ import java.util.Map;
 
 class Solution {
     public String solution(String letter) {
+        // 1.
+        /*
         Map<String, String> morse = new HashMap<>();
         morse.put(".-","a");
         morse.put("-...","b");
@@ -37,5 +39,21 @@ class Solution {
         }
         
         return answer.toString();
+        */
+        
+        // 2.
+        String answer = "";
+        String[] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        String[] word = letter.split(" ");
+
+        for(int i=0;i<word.length;i++){
+            for(int j=0;j<morse.length;j++){
+                if( word[i].equals(morse[j]) ){
+                    answer+=(char)(j+97);
+                }
+            }
+        }
+
+        return answer;        
     }
 }
